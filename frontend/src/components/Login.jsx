@@ -3,14 +3,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import movieService from '../services/movies'
 import loginService from '../services/login'
 import { errorNotificationChange, errorNotificationReset } from '../reducers/errorNotificationReducers'
-import { changeUser } from '../reducers/loginReducers'
+import { changeUser } from '../reducers/userReducers'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import { useNavigate, Navigate } from 'react-router-dom'
 
 const Login = () => {
   const dispatch = useDispatch()
-  const login = useSelector(state => state.login)
+  const user = useSelector(state => state.user)
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
@@ -41,25 +41,31 @@ const Login = () => {
     }
   }
 
+  const font = {
+    fontFamily: '"Roboto", sans-serif',
+    fontWeight: '150'
+  }
+
   return (
-    login === null ?
+    user === null ?
       <div>
         <br className="top-page"/>
-        <h2>login</h2>
+        <h2 style={font}>login</h2>
+        <br />
         <form onSubmit={handleLogin}>
           <div>
             <TextField label="username" sx={{
-              input: { color: 'white' }, label: { color: 'white' }, fieldset: { borderColor: 'white' } }}
+              input: { color: 'black' }, label: { color: 'black' }, fieldset: { borderColor: 'black' } }}
             onChange={(event) => setUsername(event.target.value)}/>
           </div>
           <div>
             <TextField label="password" type='password' sx={{
-              input: { color: 'white' }, label: { color: 'white' }, fieldset: { borderColor: 'white' } }}
+              input: { color: 'black' }, label: { color: 'black' }, fieldset: { borderColor: 'black' } }}
             onChange={(event) => setPassword(event.target.value)} />
           </div>
           <br/>
           <div>
-            <Button variant="contained" color="primary" type="submit" sx={{ backgroundColor: '#263b53' }}>
+            <Button variant="contained" color="primary" type="submit" sx={{ backgroundColor: '#1976d2' }}>
             login
             </Button>
           </div>

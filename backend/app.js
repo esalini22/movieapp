@@ -36,7 +36,4 @@ app.get('*', (_req,res) =>{
   res.sendFile(path.join(__dirname+'/dist/index.html'));
 });
 
-//redireccionar rutas no existentes a pagina 404
-//redireccionar rutas sin permiso a home
-
 module.exports = app

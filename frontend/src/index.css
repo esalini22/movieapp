@@ -4,13 +4,10 @@
 }
 
 body {
-  background: #242e34;
-  color: white;
-}
-
-h1 {
-  color: green;
-  font-style: italic;
+  /*background: #28363f;
+  color: white;*/
+  background: white;
+  color: black;
 }
 
 li {
@@ -20,13 +17,17 @@ li {
 }
 
 .top-page {
-  margin-top: 40px;
+  margin-top: 60px;
 }
 
 .top-page-search {
   margin-top: 70px;
 }
 
+.responsive {
+  width: 100%;
+  height: auto;
+}
 
 .error {
   color: red;

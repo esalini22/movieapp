@@ -6,8 +6,8 @@ const setToken = (newToken) => {
   token = `Bearer ${newToken}`
 }
 
-const getPoster = async (url) => {
-  const response = await axios.get(url)
+const getMovie = async (id) => {
+  const response = await axios.get(`/api/movies/${id}`)
   return response.data
 }
 
@@ -18,4 +18,4 @@ const getResults = async () => {
 }
 
 
-export default { getPoster, getResults, setToken }
+export default { getMovie, getResults, setToken }

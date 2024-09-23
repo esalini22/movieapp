@@ -14,14 +14,9 @@ const userSchema = new mongoose.Schema({
     },
     //favoriteMovies contiene las id de IMBd
     favoriteMovies: [
-      [
-        {
-          type: String,
-        },
-        {
-          type: String,
-        },
-      ]
+      {
+        type: String,
+      }
     ]
 })
 

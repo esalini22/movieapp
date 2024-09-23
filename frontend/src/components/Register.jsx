@@ -12,7 +12,7 @@ import { succesfulSignUp } from '../reducers/signupReducers'
 const Register = () => {
   const dispatch = useDispatch()
   const signup = useSelector(state => state.signup)
-  const login = useSelector(state => state.login)
+  const user = useSelector(state => state.user)
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -53,25 +53,31 @@ const Register = () => {
     )
   }
 
+  const font = {
+    fontFamily: '"Roboto", sans-serif',
+    fontWeight: '150'
+  }
+
   return (
-    login === null ?
+    user === null ?
       <div>
         <br className="top-page"/>
-        <h2>register</h2>
+        <h2 style={font}>register</h2>
+        <br />
         <form onSubmit={handleRegister}>
           <div>
             <TextField label="username" sx={{
-              input: { color: 'white' }, label: { color: 'white' }, fieldset: { borderColor: 'white' } }}
+              input: { color: 'black' }, label: { color: 'black' }, fieldset: { borderColor: 'black' } }}
             onChange={(event) => setUsername(event.target.value)}/>
           </div>
           <div>
             <TextField label="password" type='password' sx={{
-              input: { color: 'white' }, label: { color: 'white' }, fieldset: { borderColor: 'white' } }}
+              input: { color: 'black' }, label: { color: 'black' }, fieldset: { borderColor: 'black' } }}
             onChange={(event) => setPassword(event.target.value)} />
           </div>
           <br/>
           <div>
-            <Button variant="contained" color="primary" type="submit" sx={{ backgroundColor: '#263b53' }}>
+            <Button variant="contained" color="primary" type="submit" sx={{ backgroundColor: '#1976d2' }}>
             register
             </Button>
           </div>

@@ -13,25 +13,25 @@ import {
 } from '@mui/material'
 
 const Favorites = () => {
-  const login = useSelector(state => state.login)
+  const user = useSelector(state => state.user)
 
   return (
     <div>
       <ErrorNotification />
       <Notification />
       <div>
-        { login === null ?
+        { user === null ?
           <Navigate to="/"/> :
           <div>
             <br className="top-page"/>
             <h2>favorite movies</h2>
-            {login.favoriteMovies.length===0 ?
+            {user.favoriteMovies.length===0 ?
               <div>You have no favorite movies</div>
               :
               <TableContainer component={Paper}>
                 <Table>
                   <TableBody>
-                    {login.favoriteMovies.map((movie) => (
+                    {user.favoriteMovies.map((movie) => (
                       <TableRow
                         key={movie[1]}
                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}

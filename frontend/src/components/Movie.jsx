@@ -13,19 +13,25 @@ const Movie = () => {
   const location = useLocation()
   const imdbID = location.pathname.substring(8)
 
-  const login = useSelector(state => state.login)
+  const user = useSelector(state => state.user)
   const movielist = useSelector(state => state.movielist)
 
   const [movie, setMovie] = useState(null)
   const [loading, setLoading] = useState(true)
   const [rating, setRating] = useState([])
 
-  const blogStyle = {
+  const movieStyle = {
     paddingTop: 10,
     paddingLeft: 2,
     //border: 'solid',
     borderWidth: 1,
     marginBottom: 5,
+  }
+
+  const movieTitle = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
   }
 
   const url = 'https://www.imdb.com/title/' + imdbID
@@ -43,42 +49,53 @@ const Movie = () => {
   }, [])
 
   const handleAddFavorite = () => {
-    const favoriteMovies = [...login.favoriteMovies, [movie.title, imdbID]]
-    userService.updateFavs({ username: login.username, favoriteMovies })
-    dispatch(changeUser({ username: login.username, favoriteMovies }))
+    const favoriteMovies = [...user.favoriteMovies, [movie.title, imdbID]]
+    userService.updateFavs({ username: user.username, favoriteMovies })
+    dispatch(changeUser({ username: user.username, favoriteMovies }))
   }
 
   const handleRemoveFavorite = () => {
-    const favoriteMovies = login.favoriteMovies.filter(f => f[1]!==imdbID)
-    userService.updateFavs({ username: login.username, favoriteMovies })
-    dispatch(changeUser({ username: login.username, favoriteMovies }))
+    const favoriteMovies = user.favoriteMovies.filter(f => f[1]!==imdbID)
+    userService.updateFavs({ username: user.username, favoriteMovies })
+    dispatch(changeUser({ username: user.username, favoriteMovies }))
   }
 
   return (
     loading===true ?
       <div>Loading...</div> :
-      <div style={blogStyle}>
-        <br className="top-page"/>
-        <h3>{movie.title} ({movie.year})</h3>
-        <img src={movie.poster} />
-        <p>{movie.summary}</p>
-        <div style={{ display: 'flex',alignItems: 'center',flexWrap: 'wrap' }}>
-              Rating&nbsp;{rating}
+      <div style={movieStyle}>
+        <div style={movieTitle}>
+          <br className="top-page"/>
+          <h2>{movie.title} ({movie.year})</h2>
+          <img src={movie.poster} />
         </div>
-        <a href={url}>
-          <Button>
+        <br/>
+        <div>
+          <p>{movie.summary}</p>
+          <br/>
+          <div style={{ display: 'flex',alignItems: 'center',flexWrap: 'wrap' }}>
+            <strong>Rating</strong>&nbsp;{rating}
+          </div>
+          <p><strong>Genres:</strong>&nbsp;{movie.genres.join(', ')}</p>
+          <p><strong>Directed by:</strong>&nbsp;{movie.director}</p>
+          <p><strong>Writers:</strong>&nbsp;{movie.writers.join(', ')}</p>
+          <p><strong>Cast:</strong>&nbsp;{movie.cast.join(', ')}</p>
+          <br/>
+          <a href={url}>
+            <Button>
               View IMDB page
-          </Button>
-        </a>
-        {login ? login.favoriteMovies.find(f => f[1]===imdbID) ?
-          <Button onClick={handleRemoveFavorite}>
+            </Button>
+          </a>
+          {user ? user.favoriteMovies.find(f => f[1]===imdbID) ?
+            <Button onClick={handleRemoveFavorite}>
             Remove from favorites
-          </Button>
-          :
-          <Button onClick={handleAddFavorite}>
+            </Button>
+            :
+            <Button onClick={handleAddFavorite}>
             Add to favorite
-          </Button>
-          : null}
+            </Button>
+            : null}
+        </div>
       </div>
   )
 }
