@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import movieService from '../services/movies'
+import adminService from '../services/admin'
 import loginService from '../services/login'
 import { errorNotificationChange, errorNotificationReset } from '../reducers/errorNotificationReducers'
 import { changeUser } from '../reducers/userReducers'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
+import ErrorNotification from './ErrorNotification'
 import { useNavigate, Navigate } from 'react-router-dom'
 
 const Login = () => {
@@ -26,7 +27,7 @@ const Login = () => {
       })
 
       window.localStorage.setItem('loggedMovieappUser', JSON.stringify(user))
-      movieService.setToken(user.token)
+      adminService.setToken(user.token)
       dispatch(changeUser({ username: user.username, favoriteMovies: user.favoriteMovies }))
       setUsername('')
       setPassword('')
@@ -50,6 +51,7 @@ const Login = () => {
     user === null ?
       <div>
         <br className="top-page"/>
+        <ErrorNotification />
         <h2 style={font}>login</h2>
         <br />
         <form onSubmit={handleLogin}>

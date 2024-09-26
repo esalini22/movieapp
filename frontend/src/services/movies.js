@@ -1,21 +1,17 @@
 import axios from 'axios'
 
-let token = null
-
-const setToken = (newToken) => {
-  token = `Bearer ${newToken}`
+const config = {
+  headers: { Authorization: 'access_granted' },
 }
 
 const getMovie = async (id) => {
-  const response = await axios.get(`/api/movies/${id}`)
+  const response = await axios.get(`/api/movies/${id}`, config)
   return response.data
 }
 
 const getResults = async () => {
-  const response = await axios.get('/api/movies')
-  console.log(response.data)
+  const response = await axios.get('/api/movies', config)
   return response.data
 }
 
-
-export default { getMovie, getResults, setToken }
+export default { getMovie, getResults }

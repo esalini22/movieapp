@@ -7,8 +7,6 @@ const notificationSlice = createSlice({
   initialState,
   reducers: {
     notificationChange(state, action) {
-      console.log('new notification:')
-      console.log(action.payload)
       return action.payload
     },
     notificationReset() {

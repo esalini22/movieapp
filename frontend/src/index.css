@@ -5,8 +5,8 @@
 
 body {
   /*background: #28363f;
-  color: white;*/
-  background: white;
+  color: white;
+  background: white;*/
   color: black;
 }
 
@@ -31,7 +31,7 @@ li {
 
 .error {
   color: red;
-  background: lightgrey;
+  /*background: white;*/
   font-size: 20px;
   border-style: solid;
   border-radius: 5px;
@@ -40,8 +40,8 @@ li {
 }
 
 .notification {
-  color: green;
-  background: lightgrey;
+  color: black;
+  /*background: white;*/
   font-size: 20px;
   border-style: solid;
   border-radius: 5px;

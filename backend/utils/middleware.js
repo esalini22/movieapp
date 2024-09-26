@@ -59,7 +59,17 @@ const userExtractor = async (request, response, next) => {
   const user = await User.findById(decodedToken.id)
   if (user) {    
     request.user = user
-  }  
+  }
+
+  next()
+}
+
+//ensures that the api can't be accessed directly thourgh a URL
+const checkUserAgent = async (request, response, next) => {
+  if(/*!request.headers['user-agent'].includes('vscode') &&
+    !request.headers['user-agent'].includes('Postman') &&*/
+    request.headers['authorization']!=='access_granted')
+    return response.sendStatus(403)
   next()
 }
 
@@ -68,5 +78,6 @@ module.exports = {
   unknownEndpoint,
   errorHandler,
   tokenExtractor,
-  userExtractor
+  userExtractor,
+  checkUserAgent
 }

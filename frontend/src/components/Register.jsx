@@ -7,15 +7,14 @@ import { Navigate } from 'react-router-dom'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 //import { useNavigate } from 'react-router-dom'
-import { succesfulSignUp } from '../reducers/signupReducers'
 
 const Register = () => {
   const dispatch = useDispatch()
-  const signup = useSelector(state => state.signup)
   const user = useSelector(state => state.user)
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const [signup, setSignup] = useState(false)
 
   //const navigate = useNavigate()
 
@@ -30,10 +29,9 @@ const Register = () => {
 
       setUsername('')
       setPassword('')
+      setSignup(true)
 
-      dispatch(succesfulSignUp()) //que pasa si se cambia de ruta directamente desde la url?
-
-      //navigate('/success')
+      //navigate('/')
 
     } catch (exception) {
       console.log('error')
@@ -42,12 +40,12 @@ const Register = () => {
         dispatch(errorNotificationReset())
       }, 5000)
     }
-
   }
 
   if(signup===true){
     return (
       <div>
+        <br className="top-page"/>
         <h2>registration completed</h2>
       </div>
     )
