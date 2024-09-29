@@ -11,6 +11,8 @@ Built with Vite 5.2.0
 
 To build the application, run the command npm run build:ui inside the backend folder
 
+To run the application, run the command npm start inside the backend folder
+
 You are going to need a .env file inside the backend folder with the following format:
 
 ```
