@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import Notification from './Notification'
-import ErrorNotification from './ErrorNotification'
+import Notification from '../utils/Notification'
+import ErrorNotification from '../utils/ErrorNotification'
 import {
   //Switch,
   //FormGroup,
@@ -9,12 +9,18 @@ import {
   TextField,
   Box,
   Pagination,
-  Grid2 as Grid
+  Grid2 as Grid,
+  useTheme,
+  useMediaQuery
 } from '@mui/material'
-import MovieCard from './MovieCard'
+import MovieCard from '../utils/MovieCard'
 
 const Movies = ({ favorites=false }) => {
   //console.log('favorites: '+favorites)
+
+  //for responsiveness - if the browser is on mobile mode, then the cards are centered
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'))
 
   const movielist = useSelector(state => state.movielist)
   const user = useSelector(state => state.user)
@@ -46,6 +52,10 @@ const Movies = ({ favorites=false }) => {
     fontWeight: '150'
   }
 
+  const gridStyle = {
+    justifyContent:'space-evenly', alignItems:'center'
+  }
+
   return (
     <div>
       <br className="top-page-search"/>
@@ -75,7 +85,7 @@ const Movies = ({ favorites=false }) => {
                 onChange={handlePageChange}
               />
               <br/>
-              <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} justifyContent="space-evenly" alignItems="center">
+              <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} style={ isMobile ? gridStyle : null }>
                 {movies.map((movie, index) => (
                   index >= (page-1)*12 && index < page*12 ?
                     <Grid key={movie.imdbID} size={{ xs: 3, /*sm: 4, md: 4*/ }}>

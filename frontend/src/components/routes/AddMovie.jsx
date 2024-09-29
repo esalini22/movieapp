@@ -5,9 +5,9 @@ import {
   TextField
 } from '@mui/material'
 import NotFound from './NotFound'
-import adminService from '../services/admin'
-import { changeMovieList } from '../reducers/movieListReducers'
-import { notificationChange, notificationReset } from '../reducers/notificationReducers'
+import adminService from '../../services/admin'
+import { changeMovieList } from '../../reducers/movieListReducers'
+import { notificationChange, notificationReset } from '../../reducers/notificationReducers'
 import { useNavigate } from 'react-router-dom'
 
 const AddMovie = () => {

@@ -6,22 +6,21 @@ import {
   Routes,
   Route,
 } from 'react-router-dom'
-import movieService from './services/movies'
-import adminService from './services/admin'
-import Movies from './components/Movies'
 import { useDispatch, useSelector } from 'react-redux'
 import { changeUser, resetUser } from './reducers/userReducers'
 import { changeMovieList } from './reducers/movieListReducers'
-import Movie from './components/Movie'
-import Login from './components/Login'
-import Register from './components/Register'
-import Favorites from './components/Favorites'
-import NotFound from './components/NotFound'
-import AddMovie from './components/AddMovie'
-import Navbar from './components/Navbar'
+import movieService from './services/movies'
+import adminService from './services/admin'
+import Movies from './components/routes/Movies'
+import Movie from './components/routes/Movie'
+import Login from './components/routes/Login'
+import Register from './components/routes/Register'
+import Favorites from './components/routes/Favorites'
+import NotFound from './components/routes/NotFound'
+import AddMovie from './components/routes/AddMovie'
+import Navbar from './components/utils/Navbar'
 import { Container, CssBaseline } from '@mui/material'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
-
 
 const App = () => {
   const dispatch = useDispatch()

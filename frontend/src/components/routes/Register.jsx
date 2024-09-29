@@ -1,7 +1,7 @@
 /* eslint-disable linebreak-style */
 import { useDispatch, useSelector } from 'react-redux'
-import userService from '../services/users'
-import { errorNotificationChange, errorNotificationReset } from '../reducers/errorNotificationReducers'
+import userService from '../../services/users'
+import { errorNotificationChange, errorNotificationReset } from '../../reducers/errorNotificationReducers'
 import { useState } from 'react'
 import { Navigate } from 'react-router-dom'
 import TextField from '@mui/material/TextField'

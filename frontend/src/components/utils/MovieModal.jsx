@@ -9,8 +9,8 @@ import {
 import StarIcon from '@mui/icons-material/Star'
 import { Fragment } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import userService from '../services/users'
-import { changeUser } from '../reducers/userReducers'
+import userService from '../../services/users'
+import { changeUser } from '../../reducers/userReducers'
 
 const MovieModal = ({ open, handleClose, movie }) => {
 

@@ -1,7 +1,7 @@
 /* eslint-disable linebreak-style */
 import { useSelector } from 'react-redux'
-import Notification from './Notification'
-import ErrorNotification from './ErrorNotification'
+import Notification from '../utils/Notification'
+import ErrorNotification from '../utils/ErrorNotification'
 import { Navigate } from 'react-router-dom'
 import Movies from './Movies'
 

@@ -8,8 +8,8 @@ import {
 } from '@mui/material'
 import { Fragment, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import adminService from '../services/admin'
-import { changeMovieList } from '../reducers/movieListReducers'
+import adminService from '../../services/admin'
+import { changeMovieList } from '../../reducers/movieListReducers'
 
 const EditMovieModal = ({ open, handleClose, movie }) => {
 

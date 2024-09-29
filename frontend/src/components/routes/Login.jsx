@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import adminService from '../services/admin'
-import loginService from '../services/login'
-import { errorNotificationChange, errorNotificationReset } from '../reducers/errorNotificationReducers'
-import { changeUser } from '../reducers/userReducers'
+import adminService from '../../services/admin'
+import loginService from '../../services/login'
+import { errorNotificationChange, errorNotificationReset } from '../../reducers/errorNotificationReducers'
+import { changeUser } from '../../reducers/userReducers'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
-import ErrorNotification from './ErrorNotification'
+import ErrorNotification from '../utils/ErrorNotification'
 import { useNavigate, Navigate } from 'react-router-dom'
 
 const Login = () => {
