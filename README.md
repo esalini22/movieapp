@@ -13,8 +13,8 @@ To build the application, run the command npm run build:ui inside the backend fo
 
 You are going to need a .env file inside the backend folder with the following format:
 
-'''
+```
 MONGODB_URI=<your url here>
 PORT=<your desired port>
 SECRET=secret
-'''
+```
