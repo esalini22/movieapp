@@ -9,6 +9,8 @@ Node.js version: v20.16.0
 
 Built with Vite 5.2.0
 
+After cloning the repository, run the command npm install inside both the backend and frontend folders.
+
 To build the application, run the command npm run build:ui inside the backend folder
 
 To run the application, run the command npm start inside the backend folder
