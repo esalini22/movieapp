@@ -57,8 +57,16 @@ const userExtractor = async (request, response, next) => {
     })  
   }
   const user = await User.findById(decodedToken.id)
-  if (user) {    
-    request.user = user
+  if (!user) {
+    return response.status(401).json({ 
+      error: 'user invalid' 
+    })
+  }
+  request.user = user
+  if(user.username!=='admin'){
+    return response.status(401).json({ 
+      error: 'user invalid' 
+    })
   }
 
   next()

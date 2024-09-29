@@ -3,7 +3,6 @@ const Movie = require('../models/movie')
 
 adminRouter.post('/', async (request, response) => {
   const m = request.body
-  const user = request.user
 
   const movie = new Movie({
       title: m.title,
@@ -19,31 +18,23 @@ adminRouter.post('/', async (request, response) => {
       poster: m.poster
   })
 
-  if(user.username == 'admin'){
-      const savedMovie = await movie.save()
-      response.status(201).json(savedMovie)
-  }
-
-  response.status(400).end()
+  const savedMovie = await movie.save()
+  response.status(201).json(savedMovie)
 })
 
 adminRouter.delete('/:id', async (request, response) => {
-  const user = request.user
-
-  if(user.username == 'admin'){
+  const movie = await Movie.findOne({ imdbId: request.params.id})
+  if(movie){
     await Movie.findOneAndDelete({ imdbID: request.params.id })
     response.status(204).end()
   }
-  response.status(400).end()
-
+  response.status(404).end()
 })
 
 adminRouter.put('/:id', async (request, response) => {
-  const user = request.user
-  
   const movie = await Movie.findOne({imdbID: request.params.id })
 
-  if(user.username == 'admin' && movie){
+  if(movie){
     const updatedMovie = await Movie
       .findByIdAndUpdate(movie._id.toString(), { 
         title: request.body.title ? request.body.title : movie.title,

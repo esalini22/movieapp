@@ -106,7 +106,8 @@ const Movie = () => {
           <div style={movieTitle}>
             <br className="top-page"/>
             <h2>{movie.title} ({movie.year})</h2>
-            <img src={movie.poster} />
+            <br style={{ margin: '10px 0' }}/>
+            <img src={movie.poster} style={{ maxWidth: '90%', minWidth: '25%' }}/>
           </div>
           <br/>
           <div>
@@ -134,7 +135,7 @@ const Movie = () => {
             Add to favorite
               </Button>
               : null}
-            {user.username==='admin' ? <>
+            {user?.username==='admin' ? <>
               <Button onClick={handleOpen}>Edit Movie</Button>
               <EditMovieModal open={open} handleClose={handleClose} movie={movie}/>
               {/*<Button onClick={handleRemoveMovie}>Remove Movie</Button>*/}

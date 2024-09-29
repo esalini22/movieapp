@@ -64,19 +64,17 @@ const Register = () => {
         <br />
         <form onSubmit={handleRegister}>
           <div>
-            <TextField label="username" sx={{
-              input: { color: 'black' }, label: { color: 'black' }, fieldset: { borderColor: 'black' } }}
-            onChange={(event) => setUsername(event.target.value)}/>
+            <TextField label="username"
+              onChange={(event) => setUsername(event.target.value)}/>
           </div>
           <div>
-            <TextField label="password" type='password' sx={{
-              input: { color: 'black' }, label: { color: 'black' }, fieldset: { borderColor: 'black' } }}
-            onChange={(event) => setPassword(event.target.value)} />
+            <TextField label="password" type='password'
+              onChange={(event) => setPassword(event.target.value)} />
           </div>
           <br/>
           <div>
             <Button variant="contained" color="primary" type="submit" sx={{ backgroundColor: '#1976d2' }}>
-            register
+              register
             </Button>
           </div>
         </form>

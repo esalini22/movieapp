@@ -52,9 +52,8 @@ const Movies = ({ favorites=false }) => {
       <ErrorNotification />
       <Notification />
       <div>
-        <TextField label="Search" variant="outlined" sx={{
-          input: { color: 'black' }, label: { color: 'black' }, fieldset: { borderColor: 'black' } }}
-        onChange={() => setFilter(event.target.value)}/>
+        <TextField label="Search" variant="outlined"
+          onChange={() => setFilter(event.target.value)}/>
         {/*user===null ? null :
               <FormGroup>
                 <FormControlLabel control={<Switch onChange={() => setFavorites(!favorites)}/>} label="Show favorites"/>
@@ -76,7 +75,7 @@ const Movies = ({ favorites=false }) => {
                 onChange={handlePageChange}
               />
               <br/>
-              <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+              <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} justifyContent="space-evenly" alignItems="center">
                 {movies.map((movie, index) => (
                   index >= (page-1)*12 && index < page*12 ?
                     <Grid key={movie.imdbID} size={{ xs: 3, /*sm: 4, md: 4*/ }}>

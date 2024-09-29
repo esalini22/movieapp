@@ -2,3 +2,6 @@ This website shows a list of movies from the Hydra Movie Dataset. The list is pu
 It allows user aunthentication, and users can add and remove movies from favorites.
 It will allow an administator to add or remove movies from the database through an interface.
 Written in React.js and Express.js.
+
+Node.js version: v20.16.0
+Built with Vite 5.2.0
