@@ -18,6 +18,7 @@ To run the application, run the command npm start inside the backend folder
 You are going to need a .env file inside the backend folder with the following format:
 
 ```
+MONGODB_URI=<your url here>
 PORT=<your desired port>
 SECRET=secret
 ```
